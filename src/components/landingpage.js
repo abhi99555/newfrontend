@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../App.css';
-import logo from './Copy of T.png'
+import './LandingPage.css';
+import logo from './Copy of T.png';
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -14,28 +14,48 @@ const LandingPage = () => {
     navigate('/admin-login');
   };
 
+  const handleCustomerLogin = () => {
+    navigate('/customer-login');
+  };
+
   return (
     <div className="landing-page">
       <header className="landing-header">
-        <div className="logo"><img src={logo} alt="Company Logo" className="logo-image"/>
+        <div className="logo">
+          <img src={logo} alt="IndiTel Logo" className="logo-image" />
+          <h1 className="company-name">IndiTel</h1>
         </div>
-        <h1 >IndiTel</h1>
-
-        {/* <div className="menu-icon">&#9776;</div> */}
+        <div className="login-buttons">
+          <button className="admin-login" onClick={handleAdminClick}>
+            Admin Login
+          </button>
+          <button className="customer-login" onClick={handleCustomerLogin}>
+            Customer Login
+          </button>
+        </div>
       </header>
 
       <main className="landing-main">
-        <section className="landing-section admin-section">
-          <h2>Admin</h2>
-          <p>Manage your business with our powerful tools</p>
-          <button onClick={handleAdminClick}>Login</button>
+        <section className="intro-section">
+          <h2>Welcome to IndiTel</h2>
+          <p>
+            IndiTel is an Indian-based telecom company committed to providing reliable and
+            affordable communication services. With a mission to connect the nation, we
+            offer a wide range of products and services that cater to both individuals and
+            businesses. Our state-of-the-art infrastructure ensures you stay connected
+            anytime, anywhere.
+          </p>
+          <p>
+            Explore our services and experience seamless connectivity with IndiTel. Whether
+            you're looking for mobile plans, broadband, or enterprise solutions, IndiTel
+            has you covered.
+          </p>
         </section>
 
         <section className="landing-section customer-section">
           <h2>Customer</h2>
           <p>Explore our products and services</p>
           <button onClick={handleCustomerClick}>Register</button>
-          <button>Login</button>
         </section>
       </main>
 
@@ -44,7 +64,6 @@ const LandingPage = () => {
           <h3>About Us</h3>
           <ul>
             <li><a href="#overview">Company Overview</a></li>
-            {/* <li><a href="#team">Our Team</a></li> */}
             <li><a href="#vision">Mission and Vision</a></li>
           </ul>
         </div>
@@ -53,7 +72,6 @@ const LandingPage = () => {
           <h3>Contact Us</h3>
           <p>Phone: 123-456-7890</p>
           <p>Email: info@example.com</p>
-          {/* <p>Address: 123 Main St, City, Country</p> */}
         </div>
 
         <div className="footer-column">

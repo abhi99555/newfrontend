@@ -8,6 +8,7 @@ import CustomerDashboard from './components/customerdashboard';
 import AdminDashboard from './components/admindashboard';
 import AdminLogin from './components/adminlogin';
 import Thankyou from './components/thankyou';
+import CustomerLogin from './components/customerlogin';
 const App = () => {
   return (
     <Router>
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/confirm" element={<Thankyou />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/customer-login" element={<CustomerLogin />} />
       </Routes>
     </Router>
   );

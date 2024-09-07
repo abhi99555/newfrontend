@@ -1,56 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
-const CustomerDashboard = ({ location }) => {
-  const [customerData, setCustomerData] = useState({});
-  const [services, setServices] = useState([]);
-  const [documents, setDocuments] = useState([]);
-
-  const customerId = new URLSearchParams(location.search).get('customerId');
-
+ 
+const CustomerDashboard = () => {
+  const [customerDetails, setCustomerDetails] = useState(null);
+  const customerEmail = localStorage.getItem('customerEmail');
+ 
   useEffect(() => {
-    const fetchCustomerData = async () => {
+    const fetchCustomerDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:5003/customers/${customerId}`, {
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
-          }
-        });
-        setCustomerData(response.data.customer);
-        setDocuments(response.data.documents);
-        setServices(response.data.services);
+        const response = await axios.get(`http://localhost:5004/customers/email/${customerEmail}`);
+        setCustomerDetails(response.data);
       } catch (error) {
-        console.error('Error fetching customer data:', error);
+        console.error('Error fetching customer details:', error);
       }
     };
-
-    fetchCustomerData();
-  }, [customerId]);
-
+ 
+    if (customerEmail) {
+      fetchCustomerDetails();
+    }
+  }, [customerEmail]);
+ 
+  if (!customerDetails) {
+    return <div>Loading...</div>;
+  }
+ 
   return (
     <div>
-      <h2>Customer Dashboard</h2>
-      <h3>Your Details</h3>
-      <p>Name: {customerData.first_name} {customerData.last_name}</p>
-      <p>Email: {customerData.email}</p>
-      <p>Phone Number: {customerData.phone_no}</p>
-      <p>Address: {customerData.address}</p>
-
-      <h3>Your Documents</h3>
-      <ul>
-        {documents.map(doc => (
-          <li key={doc.id}>{doc.filePath} - {doc.verificationStatus}</li>
-        ))}
-      </ul>
-
-      <h3>Your Services</h3>
-      <ul>
-        {services.map(service => (
-          <li key={service.id}>{service.name} - {service.isActive ? 'Active' : 'Inactive'}</li>
-        ))}
-      </ul>
+      <h1>Welcome, {customerDetails.name}</h1>
+      <p>Email: {customerDetails.email}</p>
+      <p>Phone: {customerDetails.phone_no}</p>
+      {/* Render other customer details here */}
     </div>
   );
 };
-
+ 
 export default CustomerDashboard;

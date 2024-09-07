@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import './DocumentUpload.css'; // Assuming you'll add styles here
 
 const DocumentUpload = () => {
   const [file, setFile] = useState(null);
- // const location = useLocation();
   const navigate = useNavigate();
- const customerId=localStorage.getItem('customerId')
+  const customerId = localStorage.getItem('customerId');
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -21,7 +21,7 @@ const DocumentUpload = () => {
     }
 
     const formData = new FormData();
-    formData.append('document', file); // Ensure this matches the backend field name
+    formData.append('document', file);
 
     try {
       await axios.post('http://localhost:5004/documents/upload', formData, {
@@ -39,11 +39,22 @@ const DocumentUpload = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Upload Document</h2>
-      <input type="file" onChange={handleFileChange} required />
-      <button type="submit">Upload</button>
-    </form>
+    <div className="upload-container">
+      <form className="upload-form" onSubmit={handleSubmit}>
+        <h2 className="upload-title">Upload Your Document</h2>
+        <div className="file-input-container">
+          <input
+            type="file"
+            className="file-input"
+            onChange={handleFileChange}
+            required
+          />
+        </div>
+        <button type="submit" className="upload-button">
+          Upload
+        </button>
+      </form>
+    </div>
   );
 };
 
