@@ -1,0 +1,167 @@
+/* LandingPage.css */
+.landing-page {
+    font-family: Arial, sans-serif;
+    background-color: #f7fafc; /* Updated lighter background color */
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Header styling */
+.landing-header {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 5%; /* Adjusted padding for responsive width */
+    color: white;
+    border-bottom: 4px solid #3e8e41; /* Added a subtle bottom border */
+    justify-content: flex-start; /* Align content to the left */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    width: 40px; /* Reduced logo size */
+    margin-right: 10px;
+}
+
+.company-name {
+    font-size: 24px; /* Reduced font size */
+    font-weight: bold;
+    margin-right: auto; /* Pushes other content (like login buttons) to the right */
+}
+
+.login-buttons {
+    display: flex;
+    gap: 10px; /* Reduced gap */
+    margin-left: auto; /* Pushes login buttons to the right side of the header */
+}
+
+.admin-login,
+.customer-login {
+    background-color: white;
+    color: #4caf50;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.admin-login:hover,
+.customer-login:hover {
+    background-color: #45a049;
+    color: white;
+}
+
+/* Main content */
+.landing-main {
+    padding: 30px 10%;
+    text-align: center;
+}
+
+.intro-section {
+    margin-bottom: 30px;
+}
+
+.intro-section h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.intro-section p {
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Catalog section */
+.catalog-section {
+    margin-top: 40px;
+}
+
+.catalog {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.catalog-item {
+    background-color: #e0f7fa;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 250px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Added shadow for better look */
+}
+
+.catalog-item h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.catalog-item p {
+    margin-bottom: 15px;
+}
+
+.catalog-item button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.catalog-item button:hover {
+    background-color: #45a049;
+}
+
+/* Footer styling */
+.landing-footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-column {
+    text-align: left;
+}
+
+.footer-column h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.footer-column ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-column li {
+    margin-bottom: 8px;
+}
+
+.footer-column a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-column a:hover {
+    text-decoration: underline;
+}
+
+.footer-column p {
+    margin: 5px 0;
+}

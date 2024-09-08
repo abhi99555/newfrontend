@@ -1,8 +1,8 @@
-// src/components/CustomerLogin.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './CustomerLogin.css'; // Import the dedicated CSS file
+import './CustomerLogin.css';
+import logo from './Copy of T.png'; // Import the logo for IndiTel
 
 const CustomerLogin = () => {
   const [email, setEmail] = useState('');
@@ -15,26 +15,36 @@ const CustomerLogin = () => {
     try {
       const response = await axios.post('http://localhost:5004/auth/login', {
         email,
-        password
+        password,
       });
+
       if (response.status === 200) {
-        alert('Login successful');
-        // Store email in localStorage to access it in the customer dashboard
-        localStorage.setItem('customerEmail', email);
-        // Redirect to customer dashboard
-        navigate('/customer-dashboard');
+        const { data } = response;
+        if (data.success) {
+          localStorage.setItem('customerEmail', email);
+          navigate('/customer-dashboard');
+        } else {
+          setError('Invalid credentials');
+        }
       }
     } catch (error) {
       setError('Login failed. Please check your credentials and try again.');
-      console.error('Error during customer login:', error);
     }
   };
 
   return (
-    <div className="login-container">
-      <form className="login-form" onSubmit={handleLogin}>
-        <h2 className="login-title">Customer Login</h2>
-        <div className="form-group">
+    <div className="login-page">
+      {/* Header matching LandingPage */}
+      <header className="login-header">
+        <div className="logo">
+          <img src={logo} alt="IndiTel Logo" className="logo-image" />
+          <h1 className="company-name">Welcome to IndiTel</h1>
+        </div>
+      </header>
+
+      <main className="login-main">
+        <form className="login-form" onSubmit={handleLogin}>
+          <h2>Customer Login</h2>
           <input
             type="email"
             value={email}
@@ -43,8 +53,6 @@ const CustomerLogin = () => {
             className="form-input"
             required
           />
-        </div>
-        <div className="form-group">
           <input
             type="password"
             value={password}
@@ -53,10 +61,10 @@ const CustomerLogin = () => {
             className="form-input"
             required
           />
-        </div>
-        <button type="submit" className="login-button">Login</button>
-        {error && <p className="error-message">{error}</p>}
-      </form>
+          <button type="submit" className="login-button">Login</button>
+          {error && <p className="error-message">{error}</p>}
+        </form>
+      </main>
     </div>
   );
 };

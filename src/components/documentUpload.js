@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './DocumentUpload.css'; // Assuming you'll add styles here
+import './DocumentUpload.css'; // Import the updated CSS file
+import logo from './Copy of T.png'; // Import the logo for IndiTel
 
 const DocumentUpload = () => {
   const [file, setFile] = useState(null);
@@ -39,21 +40,29 @@ const DocumentUpload = () => {
   };
 
   return (
-    <div className="upload-container">
-      <form className="upload-form" onSubmit={handleSubmit}>
-        <h2 className="upload-title">Upload Your Document</h2>
-        <div className="file-input-container">
-          <input
-            type="file"
-            className="file-input"
-            onChange={handleFileChange}
-            required
-          />
+    <div className="document-upload-container">
+      <header className="document-upload-header">
+        <div className="logo">
+          <img src={logo} alt="IndiTel Logo" className="logo-image" />
+          <h1 className="company-name">Welcome to IndiTel</h1>
         </div>
-        <button type="submit" className="upload-button">
-          Upload
-        </button>
-      </form>
+      </header>
+      <div className="upload-container">
+        <form className="upload-form" onSubmit={handleSubmit}>
+          <h2 className="upload-title">Upload Your Document</h2>
+          <div className="file-input-container">
+            <input
+              type="file"
+              className="file-input"
+              onChange={handleFileChange}
+              required
+            />
+          </div>
+          <button type="submit" className="upload-button">
+            Upload
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,113 @@
+/* Overall container styling */
+.admin-dashboard-container {
+    background-color: #f0f4f8; /* Matching the light background color */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px; /* Create space for the fixed header */
+    box-sizing: border-box; /* Include padding in the height */
+  }
+  
+  /* Header styling */
+  .dashboard-header {
+    position: fixed; /* Fixed position to stay at the top */
+    top: 0;
+    width: 100%;
+    background-color: #333; /* Same green header as CustomerLogin */
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    z-index: 1000; /* Ensure header stays above other content */
+  }
+  
+  .dashboard-header h1 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  /* Content container */
+  .dashboard-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-top: 80px; /* Ensure content starts below header */
+  }
+  
+  /* Heading styling */
+  .dashboard-heading {
+    font-size: 24px;
+    color: #4caf50; /* Using the same green color as CustomerLogin */
+    margin-bottom: 20px;
+  }
+  
+  /* Table styling */
+  .table-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .styled-table {
+    width: 100%;
+    max-width: 800px; /* Limiting table width */
+    border-collapse: collapse;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .styled-table th,
+  .styled-table td {
+    padding: 12px 15px;
+    text-align: left;
+  }
+  
+  .styled-table thead {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .styled-table tbody tr:nth-of-type(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .styled-table tbody tr:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .status-active {
+    color: green;
+  }
+  
+  .status-inactive {
+    color: red;
+  }
+  
+  .activate-btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .activate-btn:hover {
+    background-color: #45a049;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .admin-dashboard-container {
+      padding-top: 70px; /* Adjust padding for smaller screens */
+    }
+  
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+    }
+  }
+  
